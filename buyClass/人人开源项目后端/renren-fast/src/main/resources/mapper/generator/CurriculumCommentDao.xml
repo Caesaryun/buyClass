@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.generator.dao.CurriculumCommentDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.generator.entity.CurriculumCommentEntity" id="curriculumCommentMap">
+        <result property="id" column="id"/>
+        <result property="curriculumId" column="curriculum_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="rating" column="rating"/>
+        <result property="comment" column="comment"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+   <select id="searchCurriculumComment" parameterType="Integer" resultType="HashMap">
+
+       SELECT
+        u.nick_name,
+        u.photo,
+        cc.rating,
+        comment
+      FROM tb_curriculum_comment cc JOIN tb_user u
+      ON cc.user_id=u.user_id
+      WHERE cc.curriculum_id=#{curriculumId}
+      ORDER BY cc.rating DESC
+      LIMIT 5
+
+   </select>
+
+
+   <select id="searchCommentByPage"  parameterType="HashMap"  resultType="HashMap">
+     SELECT
+        u.nick_name,
+        u.photo,
+        cc.rating,
+        cc.comment
+      FROM tb_curriculum_comment cc JOIN tb_user u
+      ON cc.user_id=u.user_id
+      WHERE cc.curriculum_id=#{curriculum_Id}
+      ORDER BY cc.rating DESC
+      LIMIT #{start},#{length}
+
+   </select>
+
+
+
+
+</mapper>

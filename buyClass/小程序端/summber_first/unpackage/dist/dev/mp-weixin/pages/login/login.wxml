@@ -1,0 +1,1 @@
+<view><image class="logo" src="../../static/img/logo.jpg" mode="widthFix"></image><button class="btn" open-type="getUserInfo" data-event-opts="{{[['tap',[['login']]]]}}" bindtap="__e">登录系统</button></view>

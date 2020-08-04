@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.generator.dao.CurriculumIndexDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.generator.entity.CurriculumIndexEntity" id="curriculumIndexMap">
+        <result property="id" column="id"/>
+        <result property="curriculumId" column="curriculum_id"/>
+        <result property="seqNum" column="seq_num"/>
+        <result property="chapter" column="chapter"/>
+        <result property="section" column="section"/>
+    </resultMap>
+     <!-- 其中查询 t  b_curriculum_index表 故而找到了该curriculumIndexDao.xml文件 -->
+     <select id="searchPublicVideo" parameterType="Integer" resultType="String">
+         SELECT
+            JSON_UNQUOTE(JSON_EXTRACT((section->'$[0]'), "$.video")) AS public_video
+            FROM tb_curriculum_index
+            WHERE curriculum_id=#{curriculum_id} AND seq_num=1;
+     </select>
+
+     <select id="searchCurriculumIndex" parameterType="Integer" resultType="HashMap">
+         SELECT
+             chapter,
+		     section
+        FROM tb_curriculum_index
+        WHERE curriculum_id=#{curriculum_id}
+     </select>
+
+
+
+</mapper>

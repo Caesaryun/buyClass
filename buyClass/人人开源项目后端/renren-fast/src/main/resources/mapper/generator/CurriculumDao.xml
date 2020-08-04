@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.modules.generator.dao.CurriculumDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.modules.generator.entity.CurriculumEntity" id="curriculumMap">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="price" column="price"/>
+        <result property="currentPrice" column="current_price"/>
+        <result property="banner" column="banner"/>
+        <result property="learningCycle" column="learning_cycle"/>
+        <result property="typeId" column="type_id"/>
+        <result property="tag" column="tag"/>
+        <result property="suggestion" column="suggestion"/>
+        <result property="difficulty" column="difficulty"/>
+        <result property="state" column="state"/>
+        <result property="top" column="top"/>
+        <result property="videoNum" column="video_num"/>
+        <result property="documentNum" column="document_num"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <select id="searchTop" resultType="HashMap">
+        SELECT
+        id,banner
+        FROM tb_curriculum WHERE state='上线' AND top=1;
+    </select>
+
+    <select id="searchHot" resultType="HashMap">
+        SELECT
+             c.id,
+             c.title as name,
+             c.suggestion,
+             tp.icon,
+             th.title,
+             th.nick_name
+        FROM tb_curriculum c
+        JOIN (SELECT id FROM tb_curriculum_sales ORDER BY buyers DESC LIMIT 1) t
+        ON  c.id=t.id
+        JOIN tb_curriculum_type tp ON tp.id=c.type_id
+        JOIN tb_curriculum_teacher cth  ON c.id=cth.curriculum_id
+        JOIN tb_teacher th ON cth.teacher_id=th.id
+    </select>
+
+    <select id="searchByDifficulty" parameterType="String" resultType="HashMap">
+        SELECT
+             c.id,
+             c.title as name,
+             c.learning_cycle,
+             c.tag,
+             tp.icon,
+             th.title,
+             th.nick_name
+        FROM tb_curriculum c
+        JOIN tb_curriculum_type tp ON tp.id=c.type_id
+        JOIN tb_curriculum_teacher cth  ON c.id=cth.curriculum_id
+        JOIN tb_teacher th ON cth.teacher_id=th.id
+				WHERE c.difficulty=#{difficulty} AND c.state='上线'
+				ORDER BY c.id DESC
+				LIMIT 10
+
+    </select>
+
+
+    <select id="searchByPage" parameterType="HashMap" resultType="HashMap">
+        SELECT
+             c.id,
+             c.title as name,
+             c.learning_cycle,
+             c.tag,
+             tp.icon,
+             th.title,
+             th.nick_name
+        FROM tb_curriculum c
+        JOIN tb_curriculum_type tp ON tp.id=c.type_id
+        JOIN tb_curriculum_teacher cth  ON c.id=cth.curriculum_id
+        JOIN tb_teacher th ON cth.teacher_id=th.id
+				WHERE  c.state='上线'
+				<if test="difficulty!=null">
+                    AND c.difficulty=#{difficulty}
+                </if>
+
+                <if test="keyword!=null">
+                    AND c.title LIKE '%${keyword}%'
+                </if>
+
+				ORDER BY c.id DESC
+				LIMIT #{start},#{length}
+
+    </select>
+
+   <select id="searchSummary" parameterType="Integer" resultType="HashMap">
+     SELECT
+		c.title,
+		c.price,
+		c.current_price,
+		s.buyers,
+		s.rating,
+		s.comment,
+		c.video_num,
+		c.document_num
+      FROM tb_curriculum c JOIN tb_curriculum_sales s
+      ON c.id=s.curriculum_id
+      WHERE c.id=#{id}
+
+   </select>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,272 @@
+.title{
+	font-size: 36rpx;
+	font-weight: bold;
+	// margin-left: 25rpx;
+	// margin-right: 25rpx;
+	// margin-top: 20rxp;
+	// margin-bottom: 20rpx;
+	margin:20rpx 25rpx;
+	
+}
+.public-video{
+	width: 100%;
+}
+
+.attr-info{
+	margin: 10rpx 25rpx;
+	.attr-image{
+		margin-right: 10rpx;
+		width: 30rpx;
+		&:nth-of-type(1){
+			vertical-align: -1rpx;
+		}
+		&:nth-of-type(2){
+			vertical-align: -4rpx;
+		}
+		&:nth-of-type(3){
+			vertical-align: -6rpx;
+		}
+	}
+	.attr{
+		font-size: 26rpx;
+		margin-right: 30rpx;
+		color:#999;
+		&:last-of-type{
+			margin-right: 0;
+		}
+	}
+}
+
+.price-info{
+	margin-right: 25rpx;
+	margin-left: 25rpx;
+	font-size: 32rpx;
+	margin-bottom: 20rpx;
+	.current-price{
+		color: red;
+		font-size: 50rpx;
+		margin-right: 50rpx;
+	}
+	.price{
+		text-decoration: line-through;
+	}
+}
+
+.special-info{
+   
+	border-top: #e9e9e9 solid 20rpx;
+	border-bottom: #e9e9e9 solid 20rpx;
+	padding: 30rpx;
+	display: flex;
+	.special-icon{
+		background-color: #82bef5;
+		font-size: 28rpx;
+		border-radius: 5rpx;
+		margin-right: 15rpx;
+		color: #fff;
+		padding: 3rpx 10rpx;
+		margin-top: 1rpx;
+	}
+	.special-tag{
+		font-size: 28rpx;
+		margin-right:35rpx ;
+		color: #666;
+	}
+}
+
+
+
+.sub-title{
+		margin: 0 0 20rpx 0;
+		font-weight: normal;
+		font-size: 30rpx;
+}
+	
+.teacher-container{
+	
+	padding: 20rpx 30rpx 40rpx 30rpx;
+	
+	
+	.teacher{
+	     display: flex;
+	  .teacher-header{
+		width: 130rpx;
+		border: solid #e0e0e0 6rpx;
+		border-radius: 71rpx;
+		}
+	
+	.teacher-info{
+		margin-left: 25rpx;
+		padding: 12rpx;
+		padding-bottom: 20rpx;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		.line-1{
+			.teacher-name{
+				font-size: 36rpx;
+				font-weight: bold;
+			}
+			.title-icon{
+				width: 40rpx;
+				vertical-align: -8rpx;
+				margin-right: 8rpx;
+			}
+			.teacher-title{
+				font-size: 28rpx;
+				color: #666;
+			}
+		}
+		.line-2{
+			.teacher-attr-tag{
+				font-size: 28rpx;
+				color: #999;
+				margin-right: 35rpx;
+			}
+		}
+	  }
+	
+	}
+	
+	.teacher-introduction{
+		font-size: 28rpx;
+		margin: 15rpx 10rpx 0 10rpx;
+		line-height: 1.5;
+	}
+	
+}
+
+.document-container{
+	border-top: #e9e9e9 solid 20rpx;
+	border-bottom: #e9e9e9 solid 20rpx;
+	padding: 20rpx 30rpx;
+	.document-attr-tag{
+		font-size: 28rpx;
+		color: #999;
+	}
+	.document-attr-separator{
+		.document-attr-tag;
+		margin: 0 15rpx;
+		
+	}
+		
+	
+}
+
+
+
+
+.index-container{
+	padding: 20rpx 30rpx;
+	border-bottom: #e9e9e9 solid 20rpx;
+	.index-title{
+		.sub-title;
+		border-bottom: solid #e9e9e9 2rpx;
+		padding-bottom: 15rpx;
+	}
+	.chapter-container{
+		padding: 0 20rpx;
+			
+		.chapter{
+			font-size: 28rpx;
+ 			margin-bottom: 20rpx;
+		}
+			
+		.lesson{
+			
+			display: flex;
+						padding: 0 30rpx;
+						margin-bottom: 20rpx;
+						border-bottom: dashed #e0e0e0 2rpx;
+						padding-bottom: 30rpx;
+						&:last-of-type{
+							border-bottom: none;
+					    	}
+		  .play-icon{
+				 width: 52rpx;
+				 			    background-color: #33c9ff;
+				 			    padding: 10rpx;
+				 			    margin-right: 20rpx;
+				 			    margin-top: 10rpx;
+				 			    border-radius: 3rpx;
+			}
+			.lesson-info{
+				padding-top: 5rpx;
+				.lesson-title{
+					font-size: 28rpx;
+				}
+				.lession-desc{
+					font-size: 24rpx;
+									color: #999;
+									margin-right: 25rpx;
+									&:last-of-type{
+										margin-right: 0;
+									}
+				}
+				.finish{
+					color: #33c9ff;
+				}
+			}
+		}
+		
+	}
+
+}
+
+
+.comment-container{
+	   padding: 20rpx 30rpx;
+	   .comment-title-container{
+		   display: flex;
+           justify-content: space-between;
+		   .comment-title{
+			   margin: 0 0 20rpx 0;
+			   font-weight: normal;
+			   font-size: 30rpx;
+			   .comment-sub-title{
+				   font-size: 20rpx;
+				   color: #999;
+			   }
+			   
+		   }
+		   .all{
+			   font-size: 28rpx ;
+			   color: #999;
+			   image{
+				   width: 45rpx;
+				   vertical-align: -10rpx;
+			   }
+		   }
+	   }
+	   .comment-info{
+		   display: flex;
+		   border-bottom: solid 1rpx #e0e0e0;
+		   padding: 25rpx 0;
+		   &:last-of-type{
+			   border-bottom: none;
+		   }
+		   .user-header{
+			   width: 70rpx;
+			   flex-grow: 0;    //不放大
+			   flex-shrink: 0;  //不缩小
+			   margin-top: 15rpx;
+			   margin-right: 20rpx;
+		   }
+		   .comment-context{
+			   flex-grow: 1;
+			   .line-1{
+				   font-size: 28rpx;
+				   display: flex;
+				   justify-content: space-between;
+				   }
+				.line-2{
+					font-size: 28rpx;
+					color: #999;
+					line-height: 1.5;
+					margin-top: 10rpx;
+				}
+		   }
+		   
+	   }
+	   
+}

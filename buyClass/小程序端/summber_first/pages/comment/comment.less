@@ -1,0 +1,36 @@
+
+.comment-container{
+	   padding: 20rpx 30rpx;
+	  
+	   .comment-info{
+		   display: flex;
+		   border-bottom: solid 1rpx #e0e0e0;
+		   padding: 25rpx 0;
+		   &:last-of-type{
+			   border-bottom: none;
+		   }
+		   .user-header{
+			   width: 70rpx;
+			   flex-grow: 0;    //不放大
+			   flex-shrink: 0;  //不缩小
+			   margin-top: 15rpx;
+			   margin-right: 20rpx;
+		   }
+		   .comment-context{
+			   flex-grow: 1;
+			   .line-1{
+				   font-size: 28rpx;
+				   display: flex;
+				   justify-content: space-between;
+				   }
+				.line-2{
+					font-size: 28rpx;
+					color: #999;
+					line-height: 1.5;
+					margin-top: 10rpx;
+				}
+		   }
+		   
+	   }
+	   
+}
